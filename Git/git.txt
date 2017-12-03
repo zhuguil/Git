@@ -1,0 +1,24 @@
+GIT
+1：git是一个分布式版本控制系统,能够记录每次修改的内容,可以回退到以前版本,还可以协同工作.
+2：集中式版本控制系统：CVS ,SVN
+		版本库集中存放在中央服务器，需要每天从服务器下载最新的版本到自己电脑上,工作结束上传修改的代码，需要联网工作
+	分布式版本控制系统：GIT
+		每个人的电脑都是版本库，不需要联网工作
+3：安装git
+	安装完场，需要设置用户名和邮箱
+		查询用户名和邮箱
+			git config user.name
+			git config user.email
+		设置或更新用户名邮箱
+		git config --global user.name "your name"
+		git config --global user.email "your email"
+
+4: 创建Git的仓库(repository)
+	1：创建一个空的文件夹
+	2：进入该文件夹,在git bash 输入命令 ,使该文件夹变为可管理的仓库 
+		git init
+
+5:	添加文件
+	1:必须将文件放入仓库目录及其子目录下
+	2：git add file
+	3: git commit -m "备注信息"  (commit会一次提交很多File)
