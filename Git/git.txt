@@ -28,4 +28,57 @@ GIT
 	git diff  查看改动的内容(此时修改的内容还没有commit)
 	
 
-7:
+7:	git回滚和内部指针问题
+		git 有一个 HEAD 指针，指的是当前版本id，上一版本是HEAD^,前100版本是HEAD~100
+		git log 查看版本信息,历史版本id等信息
+		git reflog 记录每一次命令,可以找到历史版本id
+		git reset --hard HEAD  (回滚到指定版本)
+
+8:	工作区(文件存放目录)
+	版本库(.git文件夹)
+		stage(暂存区)
+		master(主分支)	
+	使用 git add file 命令是将工作区内容存放到stage里面
+	git commit 命令是将stage里面内容存入master里面
+	
+------------------------------------------
+github
+1:	在本地创建  ssh-key
+2：	关联到github上
+3: 	git remote add origin https://github.com/zhuguil/Git.git
+	git push -u origin master
+	-u作用是关联本地master分支内容和远程master分支内容
+4：以后推送内容只要
+		git push origin master
+
+5：从远程仓库clone
+	git clone https://github.com/zhuguil/Java.git
+
+6: 分支
+	查看分支：git branch
+
+	创建分支：git branch <name>
+
+	切换分支：git checkout <name>
+
+	创建+切换分支：git checkout -b <name>
+
+	合并某分支到当前分支：git merge <name>
+
+	删除分支：git branch -d <name>
+
+7：合并分支也会发生冲突,比如两个分支都对一个文件做了修改并提交，
+	当合并分支就会失败，必须手动修改
+
+
+
+
+
+
+
+
+
+
+
+
+		
