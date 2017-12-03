@@ -14,7 +14,7 @@ GIT
 		git config --global user.email "your email"
 
 4: 创建Git的仓库(repository)
-	1：创建一个空的文件夹
+	1：创建一个空的文件夹(mkdir repository)
 	2：进入该文件夹,在git bash 输入命令 ,使该文件夹变为可管理的仓库 
 		git init
 
@@ -22,3 +22,10 @@ GIT
 	1:必须将文件放入仓库目录及其子目录下
 	2：git add file
 	3: git commit -m "备注信息"  (commit会一次提交很多File)
+
+6: 追踪git仓库文件状态
+	git status 查看是否变化
+	git diff  查看改动的内容(此时修改的内容还没有commit)
+	
+
+7:
