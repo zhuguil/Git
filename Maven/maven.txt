@@ -1,0 +1,50 @@
+1:	Maven的安装
+		1：安装jdk(有版本要求)
+		2： M2_HOME  D:\apache-maven-3.2.2
+		3:	 PATH     %M2_HOME%\bin;
+2:	测试安装成功和版本 
+		mvn -v
+
+3:	maven的作用
+		1：项目构建
+		2：jar依赖管理
+
+4：maven的目录约定
+	---src
+		---main
+			---java 存放项目.java 文件
+			---resources 存放项目资源文件,如spring等的配置文件
+		---test
+			---java 存放所有测试.java 文件
+			---resources 存放项目资源文件
+	---target 项目输出位置
+	---pom.xml 用于标识该项目是一个maven项目
+	
+5: maven编译与清理
+	在跟文件夹下
+			mvu compile 编译项目
+			mvn clean 清理项目
+			
+6: 修改本地仓库和jdk版本 conf---setting.xml
+	<localRepository>E:/repository</localRepository>
+	
+	<profile>    
+		<id>jdk-1.8</id>    
+		<activation>    
+        <activeByDefault>true</activeByDefault>    
+           <jdk>1.8</jdk>    
+		</activation>    
+	<properties>    
+		<maven.compiler.source>1.8</maven.compiler.source>    
+		<maven.compiler.target>1.8</maven.compiler.target>    
+		<maven.compiler.compilerVersion>1.8</maven.compiler.compilerVersion>    
+	</properties>    
+	</profile> 
+
+7:常用命令
+	mvn compile 编译项目
+	mvn test    测试(先编译，再测试)
+	mvn clean 	清除(删除编译产生的文件)
+	mvn package  打包(先编译，再测试,再打包)
+	mvn install 部署项目(先编译，再测试,再打包,最后部署到本地仓库)
+	mvn clean install 组合命令

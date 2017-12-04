@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 
+	http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <!--所有的Maven项目都必须配置这四个配置项-->
+    <modelVersion>4.0.0</modelVersion>
+    <!--groupId指的是项目名的项目组，默认就是包名-->
+    <groupId>cn.gacl.maven.hello</groupId>
+    <!--artifactId指的是项目中的某一个模块，默认命名方式是"项目名-模块名"-->
+    <artifactId>hello-first</artifactId>
+   <!--version指的是版本，这里使用的是Maven的快照版本-->
+    <version>SNAPSHOT-0.0.1</version>
+	<name>Hello</name>
+	<!--添加依赖的jar包-->
+  <dependencies>
+      <!--项目要使用到junit的jar包，所以在这里添加junit的jar包的依赖-->
+      <dependency>
+          <groupId>junit</groupId>
+          <artifactId>junit</artifactId>
+           <version>4.9</version>
+           <scope>test</scope>
+     </dependency>           
+   </dependencies>
+</project>
