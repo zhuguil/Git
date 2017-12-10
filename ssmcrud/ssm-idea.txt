@@ -1,0 +1,101 @@
+1：pom.xml 加入jar包
+	spring-webmvc
+	spring-jdbc
+	spring-aspects
+	mybatis
+	mybatis-spring
+	c3p0
+	mysql-connector-java
+	jstl
+	javax.servlet-api
+	junit
+2：引用bootstrap前端框架
+	将bootstrap-3.3.7-dist文件夹放在webapp目录下的static文件夹里面
+	<link href="static/bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet">
+	<script type="text/javascript" src="static/js/jquery-1.12.4.min.js"></script>
+	<script src="static/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+
+
+3:配置web.xml文件
+	//点击右键加入 (add framework support)框架支持
+	1:把applicationContext.xml加入到配置文件中,启动spring容器
+	2:配置springmvc DispatcherServlet
+	3:字符编码过滤器，一定要放在所有过滤器之前
+	4:使用Rest风格的URI，将页面普通的post请求转为指定的delete或者put请求
+	
+4:配置dispatcher-servlet.xml
+	1：扫描的包
+	2：视图解析器
+	3：<mvc:default-servlet-handler/>
+	4: <mvc:annotation-driven/>
+	
+5:配置applicationContext.xml
+	1：整合mybatis的数据源
+	2: 事务控制
+
+6:配置mybatis的逆向工程  mybatis-generator
+	1：导入架包org.mybatis.generator
+	2：配置mybatis-generator.xml文件
+	3：创建数据库表
+	4: 运行测试代码，生成对应的bean,dao,mapper
+	
+7:测试生成的dao,mapper是否能够从数据库取到数据
+	推荐Spring的项目就可以使用Spring的单元测试，可以自动注入我们需要的组件
+	*1、导入SpringTest模块
+	*2、@ContextConfiguration指定Spring配置文件的位置
+	*3、直接autowired要使用的组件即可
+	批量插入：
+		在applicationContext.xml配置一个可以执行批量的sqlSession
+
+8：搭建分页插件
+	1：加入jar包 com.github.pagehelper
+	2：在mybatis-config.xml全局配置文件中加入插件配置
+		plugin interceptor="com.github.pagehelper.PageHelper"
+	3：pagehelper
+		PageHelper.startPage(pn, 5);
+		List<Employee> employees = employeeService.getList();
+		PageInfo pageInfo = new PageInfo<>(employees, 5);
+		model.addAttribute("pageInfo", pageInfo);
+	
+9：测试页面请求crud的正确性
+	虚拟mvc请求，获取到处理结果
+	MockMvc mockMvc;
+	
+10：搭建bootstrap分页页面
+	1：路径问题，相对路径，绝对路径，一般选用绝对路径
+	2：参照bootstrap中文网写页面
+	
+11:查询，显示分页数据
+	1:加入jstl标签库,显示查询结果需要使用到<c:foreach items="${lists}" var="list">标签
+	2：对于前一页，后一页等按钮操作时，都是对pageInfo的属性值进行操作
+
+12：查询-ajax
+	1：@Responsebody 可以直接返回对象
+	2：需要导入jackson架包
+	3：httpmessageconverter
+	
+13:改造首页
+	js 发送ajax请求
+
+14:新增-逻辑
+	1：在index.jsp页面点击“新增”
+	2：弹出新增对话框
+	3：去数据库查询部门列表，显示在对话框中
+	4：用户输入数据完成保存
+
+15:	URI   员工保存
+	/emp/{id} GET 查询员工
+	/emp      POST 保存员工
+	/emp/{id}  PUT 修改员工
+	/emp/{id}  DELETE 删除员工
+	@ResponseBody
+	@RequestMapping(value="/emp",method=RequestMethod.POST)
+	public Msg saveEmployees(Employee employee){
+
+	employee用于接收表单请求参数
+
+保存数据校验
+后端校验 hibernate   validator 303 校验
+
+修改-逻辑
+
